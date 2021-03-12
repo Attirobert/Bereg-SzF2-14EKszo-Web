@@ -1,0 +1,94 @@
+/* 1. stílus */
+.main1{
+    width: 600px;
+    margin: 0 auto;
+    background-color: aqua;
+}
+
+.main1 h1, p {
+    margin-left: 100px;
+    margin-right: 10px;
+    color: black;
+}
+
+.main1 h1{
+    font-size: 1.8em;
+    padding-top: 20px;
+}
+
+.main1 p{
+    text-align: justify;
+}
+
+/* 2. stílus */
+.main2{
+    width: 500px;
+    margin: 0 auto;
+    background-color: antiquewhite;
+}
+
+.main2 h1, p {
+    margin-left: 100px;
+    margin-right: 10px;
+    color: black;
+}
+
+.main2 h1{
+    font-size: 1.5em;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background-color: #d7d7ac;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.main2 p{
+    text-align: justify;
+    font-size: 1.1em;
+    color: blue;
+    text-indent: 30px;
+}
+
+/* 3. stílus */
+.main3{
+    width: 600px;
+    margin: 40px 50px 0 0 ;
+    background-color: rgb(68, 36, 143);
+}
+
+.main3 h1, p {
+    margin-left: 20px;
+    color: #48321e;
+}
+
+.main3 h1{
+    font-size: 1.5em;
+}
+
+.main3 p{
+    text-align: justify;
+    line-height: 1.4em;
+}
+
+/* 4. stílus */
+.main4{
+    width: 600px;
+    margin: 0 auto;
+    background-color: aqua;
+}
+
+.main4 h1, p {
+    margin-left: 100px;
+    margin-right: 10px;
+    color: black;
+}
+
+.main4 h1{
+    font-size: 1.8em;
+    padding-top: 20px;
+}
+
+.main4 p{
+    text-align: justify;
+}
+
