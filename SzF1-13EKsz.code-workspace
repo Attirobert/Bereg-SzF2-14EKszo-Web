@@ -2,6 +2,10 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"name": "Iskola",
+			"path": "Hallgatók\\Mérész Ferenc\\Iskola"
 		}
 	],
 	"settings": {}
