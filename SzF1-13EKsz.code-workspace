@@ -8,5 +8,7 @@
 			"path": "Hallgatók\\Mérész Ferenc\\Iskola"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Web"
+	}
 }
