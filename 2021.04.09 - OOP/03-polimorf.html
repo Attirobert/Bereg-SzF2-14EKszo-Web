@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Polimorfizmus példa</title>
+    <meta name="Author" content="Kovács Attila">
+    <script src="03-polimorf.js"></script>
+</head>
+<body>
+    <script>
+        // Létre hozzuk a szereplőket (példányosítjuk az osztályokat)
+        otthon = new House("Édes otthon");
+        eva = new Women("Éva");
+        zsuzsa = new Women("Zsuzsa");
+        orsi = new Women("Orsi");
+        kati = new Women("Kati");
+        adam = new Ferfi("Ádám");
+        david = new Ferfi("Dávid");
+        dani = new Ferfi("Dani");
+        gergo = new Ferfi("Gergő");
+
+        // A szereplők haza jönnek
+        otthon.hazajon(eva);
+        otthon.hazajon(zsuzsa);
+        otthon.hazajon(orsi);
+        otthon.hazajon(kati);
+        otthon.hazajon(adam);
+        otthon.hazajon(david);
+        otthon.hazajon(dani);
+        otthon.hazajon(gergo);
+    </script>
+    <div>
+        <input type="button" value="Csengő" onclick="otthon.csenget()">
+        <p id="uzen"></p>
+    </div>
+</body>
+</html>

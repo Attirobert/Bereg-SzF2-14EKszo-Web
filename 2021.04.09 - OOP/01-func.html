@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Függvény változók</title>
+    <meta name="Author" content="Kovács Attila">
+    <script>
+        function a() {
+             alert("Szia! Én az a() függvény vagyok.");
+        }
+
+        var x = function () {
+            alert("Szia! Én az x() függvény vagyok.");
+        }
+        
+        var y = () => 
+            alert("Az 3 * 5 = "+3*5 );
+        
+    </script>
+</head>
+<body>
+<script>
+
+    alert("Az a változó típusa: "+typeof(a));
+    a();
+
+    alert("Az x változó típusa: "+typeof(x));
+    x();
+
+    alert("Az y változó típusa: "+typeof(y));
+    y(3, 5);
+
+
+</script>
+</body>
+</html>
