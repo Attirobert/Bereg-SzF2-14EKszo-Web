@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Guard operátor (láncolt logikai "és" operátor)</title>
+    <meta name="Author" content="Kovács Attila">
+</head>
+<body>
+<!-- 
+    Logika értékek
+Minden primitívnek, típusnak, műveletnek van logikai értéke, és ez true, kivéve az alábbiakat, melyek logikai értéke a false:
+    false
+    null
+    undefined
+    NaN
+    a 0 szám
+    ""
+ -->
+ <script>
+     var a = null;
+     if (a) {
+         alert("Az 'a' változó logikai értéke true");
+     }else{
+         alert("Az 'a' változó logikai értéke false");
+     }
+
+     var book = {
+        Cim: "Macskafogó", 
+        ISBN: 12345,
+        getISBN: function (){return this.ISBN}
+     }
+    /* Az && operátorok kiértékelése addig tart, amíg false értékű tagot nem kap. Ezt a tulajdonságot jól ki tudjuk használni arra, hogy megvizsgáljuk, hogy egy objektum rendelkezik-e egy metódussal és csak akkor futtassuk ha minden rendben. */
+     if (book && book.getISBN) {
+         alert("A könyv ISBN száma:" + book.getISBN());
+     }else{
+         alert("Nincs ilyen metódus!");
+     }
+ </script>
+</body>
+</html>

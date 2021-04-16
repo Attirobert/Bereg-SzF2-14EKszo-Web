@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Reguláris kifejezések</title>
+    <meta name="Author" content="Kovács Attila">
+</head>
+<body>
+<script>
+    // Reguláris kifejezés léterhozása
+    // Literállal
+    var regexp = /valamilyen szöveg/;
+    // Statikus függvénnyel
+    var rxtag = "szöveg";
+    var regexp2 = new RegExp('valami' + rxtag);
+
+    // Használat
+    regexp = /szöveg/;
+    document.write(regexp.test("Igaz, ha ebben a sorban van Szöveg."));
+
+    /* Speciális karakterek
+    . Ezen a helyen bármilyen karakter állhat a sortörésen kívül
+    ? Az előtte álló karakter max egyszer fordulhat elő
+    + Az előtte álló karakter legalább egyszer előfordul
+    * Az előtte álló karakter akárhányszor előfordulhat
+    */
+
+   document.write("<br>/A.C/.test('ABC') == " + /A.C/.test('ABC'));
+   document.write("<br>/A.C/.test('ABBC') == " + /A.C/.test('ABBC'));
+   document.write("<br>/A.C/.test('A C') == " + /A.C/.test('A C'));
+   document.write("<br>/A.C/.test('AC') == " + /A.C/.test('AC'));
+   document.write("<br>");
+
+   document.write("<br>/A.?C/.test('AC') == " + /A.?C/.test('AC'));
+   document.write("<br>/A.?C/.test('ABC') == " + /A.?C/.test('ABC'));
+   document.write("<br>/A.?C/.test('ABBC') == " + /A.?C/.test('ABBC'));
+   document.write("<br>/A.C?/.test('ABBC') == " + /A.C?/.test('ABBC'));
+   document.write("<br>");
+
+   document.write("<br>/A.+C/.test('AFC') == " + /A.+C/.test('AFC'));
+   document.write("<br>/AB+C/.test('AFC') == " + /AB+C/.test('AFC'));
+   document.write("<br>/AB+C/.test('ABC') == " + /AB+C/.test('ABC'));
+   document.write("<br>/AB+C/.test('ABBBBC') == " + /AB+C/.test('ABBBBC'));
+   document.write("<br>/AB+C/.test('AC') == " + /AB+C/.test('AC'));
+    document.write("<br>");
+
+    /* Speciális karakterek 2
+    {n} Az előtte álló karakter pontosan n-szer fordul elő
+    {n, m} Az előtte álló karakter előfordulásainak száma n és m közé esik, a határokat is beleértve
+    */
+    document.write("<br>/AB{3}C/.test('ABBBC') == " + /AB{3}C/.test('ABBBC'));
+    document.write("<br>/AB{3}C/.test('ABBC') == " + /AB{3}C/.test('ABBC'));
+    document.write("<br>/AB{3}C/.test('ABBBBC') == " + /AB{3}C/.test('ABBBBC'));
+    document.write("<br>");
+    document.write("<br>/AB{3,4}C/.test('ABBBBC') == " + /AB{3,4}C/.test('ABBBBC'));
+    document.write("<br>/AB{3,4}C/.test('ABBBC') == " + /AB{3,4}C/.test('ABBBC'));
+    document.write("<br>/AB{3,4}C/.test('ABBC') == " + /AB{3,4}C/.test('ABBC'));
+    
+    /* Speciális karakterek 3
+    \ Levédhetjük a reguláris kifejezések nyelvi elemeit (vezérlő karaktereit)
+    */
+   document.write("<br>/A\.C/.test('A.C') == " + /A\.C/.test('A.C'));
+   document.write("<br>");
+    
+    /* Speciális karakterek 4
+    [] Az adott helyen engedélyezett karakterek, karakter sorozatok és intervallumok megadása
+    */
+    document.write("<br>/A[ab135]C/.test('A1C') == " + /A[ab135]C/.test('A1C'));
+    document.write("<br>/A[ab135]C/.test('AbC') == " + /A[ab135]C/.test('AbC'));
+    document.write("<br>/A[ab135]C/.test('Ab1C') == " + /A[ab135]C/.test('Ab1C'));
+    document.write("<br>/A[a-z]C/.test('AbC') == " + /A[a-z]C/.test('AbC'));
+    document.write("<br>/A[a-z]C/.test('ABC') == " + /A[a-z]C/.test('ABC'));
+    document.write("<br>/A[a-z,A-Z]C/.test('ABC') == " + /A[a-z,A-Z]C/.test('ABC'));
+    document.write("<br>/A[a-z,A-Z]C/.test('AbC') == " + /A[a-z,A-Z]C/.test('AbC'));
+    document.write("<br>/A[a-z]C/.test('AáC') == " + /A[a-z]C/.test('AáC'));
+    document.write("<br>/A[a-z,á,é,ű,ú,ó,ü,ö,í]C/.test('AáC') == " + /A[a-z,á,é,ű,ú,ó,ü,ö,í]C/.test('AáC'));
+    document.write("<br>");
+    document.write("<br>/A[a-z]{3}C/.test('AbC') == " + /A[a-z]{3}C/.test('AbC'));
+    document.write("<br>/A[a-z]{3}C/.test('AacbC') == " + /A[a-z]{3}C/.test('AacbC'));
+    document.write("<br>");
+    document.write("<br>/A[^a-z]C/.test('AxC') == " + /A[^a-z]C/.test('AxC'));
+    document.write("<br>/A[^a-z]C/.test('AXC') == " + /A[^a-z]C/.test('AXC'));
+    document.write("<br>/A[^a-z]C/.test('AéC') == " + /A[^a-z]C/.test('AéC'));
+    document.write("<br>");
+    // Logikai 'vagy'
+    document.write("<br>/9[A|C]x/.test('9Cx') == " + /9[A|C]x/.test('9Cx'));
+    document.write("<br>/9[A|C]x/.test('9Ax') == " + /9[A|C]x/.test('9Ax'));
+    document.write("<br>/9[A|C]x/.test('9Xx') == " + /9[A|C]x/.test('9Xx'));
+    document.write("<br>");
+    
+    /* Speciális karakterek 5
+    ^ a szöveg elejét jelöli
+    $ a szöveg végét jelöli
+    */
+    document.write("<br>/^A/.test('ABB') == " + /^A/.test('ABB'));
+    document.write("<br>/^A/.test('BBA') == " + /^A/.test('BBA'));
+    document.write("<br>/A$/.test('BBA') == " + /A$/.test('BBA'));
+    document.write("<br>/van szöveg$/.test('Igaz, ha van szöveg') == " + /van szöveg$/.test('Igaz, ha van szöveg'));
+    document.write("<br>/van szöveg$/.test('Igaz, ha van szöveg!') == " + /van szöveg$/.test('Igaz, ha van szöveg!'));
+    document.write("<br>/^van szöveg$/.test('Igaz, ha van szöveg') == " + /^van szöveg$/.test('Igaz, ha van szöveg'));
+    document.write("<br>/^van szöveg$/.test('van szöveg') == " + /^van szöveg$/.test('van szöveg'));
+        document.write("<br>");
+
+    /* Kapcsolók
+    i Nem különbözteti meg a kis- és nagybetűket
+    g Az első találat után nem fejezi be a vizsgálatot
+    */
+        document.write("<br>/A[a-z]C/i.test('ABC') == " + /A[a-z]C/i.test('ABC'));
+        document.write("<br>/A[a-z]C/i.test('AbC') == " + /A[a-z]C/i.test('AbC'));
+
+    /* Magyar irányítószám ellenörzése
+    1. pozíció: 1-9
+    2-4. pozíció: 0-9
+    */
+   var isValidIRSZ = function (irsz){
+       return /^[1-9][0-9]{3}$/.test(irsz);
+   }
+
+   document.write("<br>1234 == " + isValidIRSZ('1234'));
+   document.write("<br>0234 == " + isValidIRSZ('0234'));
+   document.write("<br>12345 == " + isValidIRSZ('12345'));
+   document.write("<br>1a345 == " + isValidIRSZ('1a345'));
+</script>
+</body>
+</html>

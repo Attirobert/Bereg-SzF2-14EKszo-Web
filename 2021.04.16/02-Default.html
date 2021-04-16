@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Default operátor</title>
+    <meta name="Author" content="Kovács Attila">
+</head>
+<body>
+<h2>Default operátor (láncolt logikai "vagy" operátor)</h2>
+<script>
+    var book = function(nev, adatok){
+        nev = nev || '';
+        adatok = adatok || '';
+        adatok.cim = adatok.cim || 'Cím nélkül';
+        adatok.isbn = adatok.isbn || '0-00-000000-0';
+        adatok.lapok = adatok.lapok || 0;
+        adatok.szerzo = adatok.szerzo || 'Szerző nélkül';
+        return adatok;
+    }
+
+    var bookAdatok = book('Nyomorultak', {});
+
+/*     alert(nev + "\n"
+       + adatok.szerzo + "\n" 
+    + adatok.cim + "\n"
+    + adatok.isbn + "\n"
+    + adatok.lapok
+    ); */
+
+    console.log(adatok.cim);
+</script>
+
+</body>
+</html>

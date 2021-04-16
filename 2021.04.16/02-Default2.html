@@ -1,0 +1,19 @@
+<script>
+    var book = function (name, datas) {
+            // A név vagy a megadott név volt vagy egy üres sztring lesz
+            name = name || '';
+            datas = datas || '';
+            datas.isbn = datas.isbn || '0-00-000000-0';
+            datas.pages = datas.pages || 0;
+            datas.author = datas.author || 'Szerző nélkül';
+            datas.name = name;
+            return datas;
+        };
+        var bookDatas = book('Nyomorultak', {
+            isbn: 0,
+            pages: 50,
+            name: 'Valami egyéb'
+        });
+
+        console.log(book.datas.author);
+</script>
