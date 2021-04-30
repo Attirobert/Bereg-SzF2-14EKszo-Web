@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Reguláris kifejezések 2</title>
+    <meta name="Author" content="Kovács Attila">
+</head>
+<body>
+<script>
+    /* Csoportosítás
+    Kerek zárójelek közé zárhatjuk azt a karakter csoportot, amelyeket együtt akarunk kezelni */
+    document.write("<br>/A(BC){3}D/.test('ABCD') == " + /A(BC){3}D/.test('ABCD'));
+    document.write("<br>/A(BC){3}D/.test('ABCBCBCD') == " + /A(BC){3}D/.test('ABCBCBCD'));
+    document.write("<br>");
+
+    /* A kiválasztott csoportokra a későbbiekben a sorszámukkal vissza tudok hivatkozni (backreference). A visszahivatkozás formája: \x: ahol az x jelöli a sorszámot 
+    */
+    document.write("<br>/<(.+)>(.+)<\/\1>/.test('<strong>valami</strong>') == " + /<(.+)>(.+)<\/\1>/.test('<strong>valami</strong>'));
+    document.write("<br>/<(.+)>(.+)<\/\2>/.test('<strong>valami</strong>') == " + /<(.+)>(.+)<\/\2>/.test('<strong>valami</strong>'));
+    document.write("<br>/(.+)(.+)\2/.test('strongvalamistrong') == " + /(.+)(.+)\2/.test('strongvalamistrong'));
+    document.write("<br>/(.+)(.+)\2/.test('strongvalamivalami') == " + /(.+)(.+)\2/.test('strongvalamivalami'));
+    document.write("<br>");
+
+    // Páros számú ismétlődés
+    document.write("<br>/A(.*)\1C/.test('ABDEFxyzC') == " + /A(.*)\1C/.test('ABDEFxyzC'));
+    document.write("<br>/A(.*)\1C/.test('ABDEFBDEFC') == " + /A(.*)\1C/.test('ABDEFBDEFC'));
+    document.write("<br>");
+
+    // Hivatkozás két csoporttal
+    document.write("<br>/(.)(.+)\1X\2/.test('AFFAXFF') == " + /(.)(.+)\1X\2/.test('AFFAXFF'));
+    document.write("<br>");
+
+    /* Egyszerű ellenőrzés
+    (?:x) ahol x egy tetszőleges kifejezés. Ez a művelet csak összevon karaktereket, egy csoportban kezel egy kifejezést, de nem hoz létre visszahivatkozást
+    */
+    document.write("<br>/A(?:BA)/.test('ABA') == " + /A(?:BA)/.test('ABA'));
+    document.write("<br>/A(?:BA){2}(.+)\1$/.test('ABABAFCFC') == " + /A(?:BA){2}(.+)\1$/.test('ABABAFCFC'));
+    document.write("<br>");
+
+    /* Rövidítések
+    \w => [A-Za-z0-9_]
+    \W => [^A-Za-z0-9_]
+    \d => [0-9]
+    \D => [^0-9]
+    \s - egy whitespace karakterre illeszkedik
+    \S - bármilyen nem whitespace karakter
+    \t - tabulátor karakter
+    \n sortörés karakter
+    \r - kocsi vissza karakter
+    */
+
+   /* Reguláris kifejezések használata String objektumokban */
+   // Csere
+    document.write("<br>'Kovács Attila'.replace(/\w*$/, 'Dániel') => " + 'Kovács Attila'.replace(/\w*$/, 'Dániel'));
+    document.write("<br>'Kovács Attila'.replace(/^[A-ZÁÉÚŐÓÜÖÍa-záűőúöüóí]*/, 'Balogh') => " + 'Kovács Attila'.replace(/^[A-ZÁÉÚŐÓÜÖÍa-záűőúöüóí]*/, 'Balogh'));
+    document.write("<br>");
+
+    // Csere visszahivatkozással
+    document.write("<br>'Balogh Attila'.replace(/(\w+)\s(\w+)$/, '$2 $1') => " + 'Balogh Attila'.replace(/(\w+)\s(\w+)$/, '$2 $1'));
+    document.write("<br>");
+    
+    // Kiválogatás
+    document.write("<br>'06209141477'.match(/(\d)\1+/gi) => " + '06209141477'.match(/(\d)\1+/gi));
+    document.write("<br>");
+
+    // Darabolás
+    function reszekSzama(szam){
+        return szam.split(/[ ()-]+/gi).length;
+    }
+
+    document.write(reszekSzama('+36 (30) 123 - 4567'));
+    document.write("<br>");
+
+    function reszek(szam){
+        return szam.split(/[ ()-]+/gi);
+    }
+    document.write(reszek('+36 (30) 123 - 4567'));
+    document.write("<br>");
+</script>
+</body>
+</html>
