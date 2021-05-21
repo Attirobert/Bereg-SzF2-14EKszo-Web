@@ -1,0 +1,33 @@
+body {
+    background-image: url(ur.jpg);
+    width: 800px;
+	background-color: #000000;
+	margin: auto;
+	font-family: Times New Roman;
+    font-size: 14px;
+    color: #00FFFF;
+    text-align: justify;
+}
+h1,h3 {
+	text-align: center;
+    font-family: arial;
+}
+#alcim {
+	text-align: left;
+    background-color: black;
+}
+p {
+	background-color: #000000;
+}
+a:hover {
+	background-color: yellow;
+	color: #00003A;
+   
+}
+a{
+     text-decoration: none;
+    color:yellow;
+}
+li{
+    list-style-image: url(neptun.jpg);
+}

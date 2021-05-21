@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Nap - Föld animáció</title>
+    <meta name="Author" content="Kovács Attila">
+    <style>
+        body{
+            background: black url("sky.jpg");
+            background-repeat: repeat;
+            background-position: 0 0;
+        }
+
+        #nap, #fold, #hold{
+            position: absolute;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body id="lap" onload="a=b=0; bgX=bgY=0; kering();">
+<div id="nap">
+    <img src="sun.gif" width="200" height="200 " alt="nap" title="nap">
+    <div id="fold">
+        <img src="earth.gif" width="68" height="68" alt="föld" title="föld">
+        <div id="hold">
+            <img src="moon.gif" width="20" height="20" alt="hold" title="hold">
+        </div>
+    </div>
+</div>
+<script>
+    function kering(){
+        // Aktuális ablak mérete
+        szelesseg = window.innerWidth;
+        magassag = window.innerHeight;
+
+        // A Nap középre helyezése
+        nap.style.left = szelesseg / 2 - 100+"px";
+        nap.style.top = magassag / 2 - 100+"px";
+
+        // Föld elhelyezése (200-68)/2 = 66
+        fold.style.left = 250*Math.cos(a)+66+"px";
+        fold.style.top = 150*Math.sin(a)+66+"px";
+
+        // Hold elhelyezése (68-20)/2 = 24
+        hold.style.left = 50*Math.cos(b)+24+"px";
+        hold.style.top = 30*Math.sin(b)+24+"px";
+
+        // a Hold a Föld előtt
+        if (parseInt(hold.style.left)<-48+24) hold.style.zIndex=+1;
+
+        // a Hold a Föld mögött
+        if (parseInt(hold.style.left)>+48+24) hold.style.zIndex=-1;
+
+        // A Föld keringési sebessége
+        a=a-.002;
+
+        // A Hold keringési sebessége
+        b=b-.024;
+
+        // Háttér beállítása
+        document.body.style.backgroundPosition = bgX + "px" + bgY + "px";
+
+        bgX +=.25;
+        bgY -= .125;
+
+        setTimeout("kering()", 15);
+
+    }
+</script>
+</body>
+</html>

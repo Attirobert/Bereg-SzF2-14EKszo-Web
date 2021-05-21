@@ -1,0 +1,34 @@
+<!-- 
+    Készítsen faktoriális-táblázatot, melyben irassa ki 20-ig a nemnegatív egész számok faktoriálisának értékét! (Definíció szerint a 0 faktoriálisa: 0! = 1.) 
+ -->
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Faktoriális</title>
+    <meta name="Author" content="Kovács Attila">
+
+</head>
+<body>
+<table>
+    <thead>
+        <th>Alap</th>
+        <th>Faktoriális</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0! = </td>
+            <td>1</td>
+        </tr>
+        <script>
+            let ig = 21;
+            let fakt = 1;
+            for (let i = 1; i < ig; i++) {
+                fakt *= i;
+                document.write(`<tr><td>${i}! = </td><td>${fakt}</td></tr>`);
+            }
+        </script>
+    </tbody>
+</table>
+</body>
+</html>
