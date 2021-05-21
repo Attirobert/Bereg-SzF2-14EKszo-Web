@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>JS tömbök kezelése</title>
+    <meta name="Author" content="Kovács Attila">
+</head>
+<body>
+<script>
+    /* Tömb deklarálása */
+    let sArray = ['Réka', 'Sári'];
+    document.write("Az sArray tömb elemei: "+ sArray);
+    document.write("<br>Az sArray tömb 1. eleme: "+ sArray[0]);
+    /* Elem hozzáadása */
+    sArray.push('Kati');
+    document.write("<br>Az sArray tömb elemei: "+ sArray);
+    sArray.unshift("Róbert");
+    document.write("<br>Róbert hozzáadása: "+ sArray);
+    
+    /* Elem törlése */
+    document.write("<br>A tömb elemeinek száma törlés előtt: "+ sArray.length);
+    delete sArray[2];
+    document.write("<br>Törölve a 2. indexű elem: "+ sArray);
+    document.write("<br>A tömb elemeinek száma törlés után: "+ sArray.length);
+    
+    /* Hogy állapítom meg, hogy egy változó tömb-e? */
+    document.write("<br>A tömb típusa typeof-val: "+ typeof(sArray));
+    document.write("<br>A tömb típusa isArray-val: "+ Array.isArray(sArray));
+
+    /* Tömb mint objektum és tömb */
+    let loopTest = [1, 2, 3], result = [];
+    loopTest.nemTombErtek = 'Valami érték';
+    for (let i = 0; i < loopTest.length; i++){
+        result.push(loopTest[i]);
+    }
+    document.write("<br>loopTest.length: " + loopTest.length);
+    document.write("<br>loopTest[0]: " + loopTest[0]);
+    document.write("<br>loopTest[1]: " + loopTest[1]);
+    document.write("<br>loopTest[2]: " + loopTest[2]);
+    document.write("<br>loopTest.nemTombErtek: " + loopTest.nemTombErtek);
+    document.write("<br>result.length: " + result.length);
+    document.write("<br>result[0]: " + result[0]);
+    document.write("<br>result[1]: " + result[1]);
+    document.write("<br>result[2]: " + result[2]);
+
+    /* Asszociatív tömbök */
+    let szemely = ['Mari', 'Sári'];
+    szemely['fiu'] = 'Zoli';
+    szemely['Férfi'] = 'Tamás';
+    document.write("<br>szemely.length: " + szemely.length);
+    document.write("<br>szemely[0]: " + szemely[0]);
+    document.write("<br>szemely[1]: " + szemely[1]);
+    document.write("<br>szemely['fiu']: " + szemely['fiu']);
+    document.write("<br>szemely['Férfi']: " + szemely['Férfi']);
+    document.write("<br>szemely.fiu: " + szemely.fiu);
+    document.write("<br>szemely.Férfi: " + szemely.Férfi);
+
+    /* Tömbkezelő metódusok */
+    /* find */
+    let szamok = [4, 9, 16, 25, 29, 20];
+    let elso = szamok.find((value, index, array) => (value > 18));
+    document.write("<br>elso: " + elso);
+    /* findIndex */
+    let elsoIndex = szamok.findIndex((value, index, array) => (value > 18));
+    document.write("<br>elsoIndex: " + elsoIndex);
+    /* toString */
+    document.write("<br>toString");
+    let betuk = ['a', 'b', 'c'];
+    let str = betuk.toString();
+    document.write("<br>betuk.toString(): " + str);
+    /* join */
+    document.write("<br>betuk.join('; '): " + betuk.join('; '));
+
+    /* split() */
+    let tomb = str.split(',');
+    document.write("<br>tomb = str.split('; '): " + tomb);
+    document.write("<br>Array.isArray(tomb): " + Array.isArray(tomb));
+
+    /* splice() */
+    /* tomb.splice(p1, p2, p3...pn)
+        p1: index, ahonnan el kell kezdeni a műveletet
+        p2: megadja, hogy hány elemet kell kivenni a tömbből
+        p3 ... pn: a beszúrandó elemek
+    Visszatérési értéke a kivett elemek tömb */
+    let fruits = ['Banán', 'Narancs', 'Alma', 'Körte'];
+    let del = fruits.splice(2,1, 'Citrom', 'Kiwi');
+    document.write("<br>fruits: " + fruits);
+    document.write("<br>del: " + del);
+
+</script>
+</body>
+</html>

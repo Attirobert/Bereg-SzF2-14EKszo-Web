@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Változó hosszúságú paraméterlista</title>
+    <meta name="Author" content="Kovács Attila">
+    <script>
+        let showHero = function (name, ...datas){
+            return name + 'szuper tulajdonságai: ' + datas.join(', ');
+        }
+    </script>
+</head>
+<body>
+    <script>
+        alert(showHero('Superman', 'erős', 'mérges', 'mászik a falon'));
+    </script>
+</body>
+</html>
