@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>JS rendezések</title>
+    <meta name="Author" content="Kovács Attila">
+</head>
+<body>
+<script>
+    document.write("Szövegtömb rendezése");
+    let fruits = ["Banán", "Narancs", "Alma", "Körte", "Mangó"];
+    document.write("<br>Fruits: " + fruits);
+    fruits.sort();
+    document.write("<br>fruits.sort(): " + fruits);
+    fruits.reverse();
+    document.write("<br>fruits.reverse(): " + fruits);
+    
+    document.write("<br><br>Számtömb rendezése");
+    let szamok = [40, 100, 1, 5, 25, 10];
+    document.write("<br>szamok: " + szamok);
+    szamok.sort();
+    document.write("<br>szamok.sort(): " + szamok);
+    szamok.reverse();
+    document.write("<br>szamok.reverse(): " + szamok);
+
+    /* Számok rendezése
+    A probléma: A sort() és reverse() metódusok a számokat stringgé alakítják, így rendezik be, majd visszaalakítják számmá. 
+    Ezt kikerülendő, paraméterként névtelen függvényt adunk át, így a következő módon működik:
+    A sort() és reverse() metódusok végig iterálnak a tömbön és veszik a két egymás mellett lévő elemet, amelyeket paraméterként átadnak a névtelen függvénynek. Ezt a névtelen függvény kiértékeli és egy számot ad vissza. 
+    Ha a szám:
+        - pozitív, akkor a két tömbelemet felcseréli,
+        - egyébként nem csinál semmit.
+    Ha a tömb végére ért, akkor újra kezdi az iterációt mind addig, amíg van felcserélni valója. */
+    
+    document.write("<br><br>Számtömb rendezése - Jól");
+    document.write("<br>szamok: " + szamok);
+    szamok.sort((a, b) => (a-b));
+    document.write("<br>szamok.sort((a, b) => (a-b)): " + szamok);
+    szamok.sort((a, b) => (b-a));
+    document.write("<br>szamok.sort((a, b) => (b-a)): " + szamok);
+    szamok.sort((a, b) => (0.5 - Math.random()));
+    document.write("<br>szamok.sort((a, b) => (0.5-Math.random())): " + szamok);
+
+    /* Objektum tömb rendezése */
+    let cars = [
+        {tipus: "Volvo", evjarat: 2016},
+        {tipus: "Saab", evjarat: 2001},
+        {tipus: "volkswagen", evjarat: 2020},
+        {tipus: "BMW", evjarat: 2010}
+    ]
+        document.write("<br><br>Objektum tömb rendezése");
+        document.write("<br>cars: " + cars[0].tipus+", " + cars[1].tipus + ", "+cars[2].tipus + ", " + cars[3].tipus);
+        cars.sort((a, b)=>(a.tipus.toLocaleLowerCase() > b.tipus.toLocaleLowerCase() ? 1 : -1));
+        document.write("<br>cars: " + cars[0].tipus+", " + cars[1].tipus + ", "+cars[2].tipus + ", " + cars[3].tipus);
+        document.write("<br>cars: " + cars[0].evjarat + ", " + cars[1].evjarat + ", " + cars[2].evjarat + ", " + cars[3].evjarat);
+        cars.sort((a, b) => (a.evjarat - b.evjarat));
+        document.write("<br>cars: " + cars[0].evjarat + ", " + cars[1].evjarat + ", " + cars[2].evjarat + ", " + cars[3].evjarat);
+
+        /* foreach() */
+        document.write("<br><br>szamok: " + szamok);
+        let minValue = Number.MAX_VALUE;
+        szamok.forEach((item) => {
+            if (item < minValue) minValue = item;
+        })
+        document.write("<br>foreach()<br>A legkisebb szám a szamok tömbben: " + minValue);
+
+        /* map()
+        A belső fv visszatérési értékéből egy új tömböt készít */
+        let eredm = szamok.map((item) => (item *2));
+        document.write("<br><br>map()<br>Eredmény: " + eredm);
+
+        /* filter()
+        A belső fv visszatérési értékei alapján egy új tömböt készít. Leválogatás */
+        let szurt = szamok.filter((item)=>{
+            if (item < 11) return true;
+            return false;
+        })
+        document.write("<br><br>filter()<br>Szűrt: " + szurt);
+
+        /* every()
+        Igazat ad vissza, ha a tömb minden elemére a belső fv igaz értéket ad vissza */
+        let mindNagySzam = szamok.every((item) => (item > 11));
+        document.write("<br><br>every()<br>mindNagySzam: " + mindNagySzam);
+
+        /* some()
+        Igazat ad vissza, ha a tömbnek van olyan eleme, amelyre a belső fv igaz értéket ad vissza */
+        let vanNagySzam = szamok.some((item) => (item > 11));
+        document.write("<br><br>some()<br>vanNagySzam: " + vanNagySzam);
+
+        /* Műveletek több tömbbel */
+        document.write("<br><br>Műveletek több tömbbel");
+        document.write("<br>szamok: " + szamok);
+        let betuk = ["a", "b", "c"];
+        let betuk2 = ["x", "y", "z"];
+        document.write("<br>betuk: " + betuk);
+        document.write("<br>betuk2: " + betuk2);
+
+        /* slice()
+        az adott indextől visszaadja a tömb elemeit */
+        let a = szamok.slice(1);
+        document.write("<br>szamok.slice(1): " + szamok.slice(1));
+        document.write("<br>szamok.slice(1, 3): " + szamok.slice(1, 3));
+
+        /* concat()
+        Tömböket fűz össze */
+        document.write("<br>szamok.concat(betuk): " + szamok.concat(betuk));
+        document.write("<br>szamok.concat(betuk, betuk2): " + szamok.concat(betuk, betuk2));
+
+
+
+
+</script>
+</body>
+</html>
